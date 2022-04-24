@@ -27,11 +27,11 @@ Props aka Properties is the optional input that your component can except it als
 
 * **Props vs State**  
 
-| Props | State |  
-| --- | --- |  
-| Props get Passed to the component | State is managed within the component |  
-| Function Parameters | Variables declared with in the function body |
-| Props are immutable parent own the props and cannot be change by the children | State are mantained in the component and hence component has full control to change the state |
+  | Props | State |  
+  | --- | --- |  
+  | Props get Passed to the component | State is managed within the component |  
+  | Function Parameters | Variables declared with in the function body |
+  | Props are immutable parent own the props and cannot be change by the children | State are mantained in the component and hence component has full control to change the state |
 
 * **State**  
 A state is nothing but a object privatly maintained inside a component. A state can influence what is render in the browser. State can change within the component.
@@ -98,19 +98,81 @@ Allows you to return multiple element without enclosing every element into a par
 
 * If you return false from shouldComponentUpdate() component will not re-render
 
-* **Pure Component**
+* **Pure Component**  
+**Only Available in class component**  
 A regular component doesn't implement the shouldComponentUpdate() method. It always return true by default. A Pure component on  the other hand implements shouldComponentUpdate() with a shallow props and state comparison. Pure component does shallow comparison of prevState with currentState and prevProps with currentProps
 
 * **Shallow Prop and State Comparison**
 
-| Primitive Types | Complex Types |  
-| --- | --- |  
-| a Shallow Comparision b returns true if a and b have same value and are of the same type |  a Shallow Comparision b returns true if a and b reference the same object |  
+  | Primitive Types | Complex Types |  
+  | --- | --- |  
+  | a Shallow Comparision b returns true if a and b have same value and are of the same type |  a Shallow Comparision b returns true if a and b reference the same object |  
 
-Example of shallow comparison on complex data type
+  Example of shallow comparison on complex data type
 
-var a = [1, 2, 3]
-var b = [1, 2, 3]
-var c = a
-(a === b ) returns false
-(a === c) returns true because a and c refer to same object
+  var a = [1, 2, 3]
+  var b = [1, 2, 3]
+  var c = a
+  (a === b ) returns false
+  (a === c) returns true because a and c refer to same object
+
+* **MEMO**  
+**What pure component is to class component, memo is to function component**  
+Using memo will cause React to skip rendering a component if its props have not changed.
+
+* **Refs**
+Refs provide a way to access DOM nodes or React elements created in the render method.  
+Three Way to implement Refs  
+
+  1) React.createRef()
+  2) Using Callback Ref (Older Approach)
+  3) Using Refs on component
+
+* **Ref Forwarding**  
+It is a technique for automatically passing a ref through a component to one of its childern.  
+We know that every functional components recieves props as its parameter, but when the component is passed as parameter
+to the create Ref Method it recieves ref attribute as its second parameter.
+
+* **React Portal**  
+React portals provides a way to render children into a DOM node that exists outside the DOM heirarchy of the parent component.
+
+* **Why do we need React Portal?**  
+When we have to deal with parent component CSS when that child componet is a modal, pop-up or toolkit [Demo](https://codesandbox.io/s/00254q4n6p)  
+**Event Bubbling in Portal** even though a portal can be anywhere in the DOM tree it behaves like a normal react child in every other way this includes event bubbling, so an event fired from inside a portal will propogate to ancestors in the containing react tree even though those elements are not ancestors in the DOM tree. [Demo](https://codesandbox.io/s/00254q4n6p)
+
+* **Error Boundary**  
+A class component that implements either one or both of the life cycle methods **getDerivedStateFromError** or **componentDidCatch** becomes an error boundary.  
+Error boundaries are react component that catch javascript error in their child conponent tree, logs those error, and display a fallback UI.  
+Error boundaries catch errors during rendering in lifecycle methods and constructor of the whole tree below them however they don't catch errors inside event handlers, if you have and onclick handler and want to catch an error you just need to use regular try catch statements and not error boundaries.
+
+  1) static method **getDerivedStateFromError** method is used to render a fallback UI after an error is thrown.
+  2) method **componentDidCatch** method is used to log the error information.
+
+* **Higher Order Components**
+A pattern where a function takes a compoenent as an argument and returns a new component. A HOC adds new functionality or data to the original Component.
+
+  1) **Passing prop in HOC** When you the prop to component they are passed to HOC and not to component. To fix this issue you to pass the props from HOC to component using spread operator.  
+  2) **Pasing parameters to HOC**
+
+* **Render Props**
+Another way of sharing React components  
+In react it is possible to use a prop whose value is a function to control what is actually rendered by a component.  
+Render props refer to a technique for **sharing code** between React Component using a **prop whose value is a function**  
+
+* **Anything within the component open and closing tag will be passed as a children prop** (this.prop.children)  
+
+* **React Context**  
+Why we need React Context? [Need of React Context](https://www.youtube.com/watch?v=j3j8St50fNY&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=38)  
+Context provides a way to pass data through the component tree without having to pass props down manually at every level  
+Steps to use context
+
+  1) Create the context (src/components/Day3/userContext.js)
+  2) Provide a context value (src/Day3.js:25)
+  3) Consume the context value (src/components/Day3/ComponentC.js)  
+  [KEYPOINT](https://www.youtube.com/watch?v=A9WlkhdLnn0&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=42)
+
+* **React HTTP GET/POST**  
+React itself doesn't have a particular way to fetch or send data to the server.  
+React component simply reads props and stats and render the components therefore to use some data from server
+you have to get the data into your components props or state.  
+**AXIOS** is a http library to get or send data to the server.

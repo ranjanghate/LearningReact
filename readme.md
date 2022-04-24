@@ -20,3 +20,15 @@
 * Component Lifecycle Method
 * Fragments  
 * Pure Components
+
+## Day3
+
+* Memo
+* Ref
+* Forwarding Ref
+* React Portals
+* Error Boundary
+* Higher order components
+* Render Props
+* React Context
+* HTTP

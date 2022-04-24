@@ -17,7 +17,7 @@ function Day2() {
     <div>
 
       <ParentComponent2 />
-{/* 
+
       <FragmentDemo />
 
       <LifeComponentA />
@@ -33,7 +33,7 @@ function Day2() {
       <NameList />
 
       <UserGreeting />
-      <ParentComponent /> */}
+      <ParentComponent />
     </div>
   )
 }
