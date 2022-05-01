@@ -32,3 +32,15 @@
 * Render Props
 * React Context
 * HTTP
+
+## Day4
+
+* React Hooks
+* useState
+* useState with previousState, object and array
+* useEffect
+* useEffect with condition, only once, after-cleanup
+* Fetch Data using useEffect
+* useContext
+* useReducer (single type, object type)
+* Multiple useReducer

@@ -176,3 +176,45 @@ React itself doesn't have a particular way to fetch or send data to the server.
 React component simply reads props and stats and render the components therefore to use some data from server
 you have to get the data into your components props or state.  
 **AXIOS** is a http library to get or send data to the server.
+
+* **React Hooks**
+Hooks allows use to use React features without using a class.  
+**Why React Hooks?**
+
+  1) Class component use this keyword which works different in javascript as compare to other langugae.
+  2) Remember to bind event handlers in class componenets.
+  3) Classes don't minify very well and make hot reloading very unreliable.
+  4) There is no particular way to reuse stateful component logic. HOC and render props patterns do address this problem, but it makes the code harder to follow.
+  5) Create component for complex scenarios such as data fetching and subscribing to events. Related code is not organized in one place.  
+  Ex :- Data Fetching - In componentDidMount and componentDidUpdate  
+  Ex :- Event Listeners - In componentDidMount and componentWillUmount  
+  6) Because of stateful logic - Cannot break components into smaller ones.  
+
+* **useState**
+  useState() function take one argument which is the initial value of state and return two variables. First the state variable and second is the function to update the state.  
+**Difference between class component's setState and hook's use state is that useState doesn't automatically merge and update the object and setState does**
+
+* **useEffect**  
+The effect hook let you perform side effects in functional components.  
+It is a close replacement for componentDidMount, componenetDidUpdate and componentWillUnmount.  
+useEffect is a function which takes a function as a argument with executed after every render of the component.  
+**Conditional Use Effect**: you just have to pass a state a props in an array with useEffect function, in that array we need to pass prop or state which we need to watch if those props or state were to change the effect will be executed. That array is known as **Dependency Array**.  
+**Run Use Effect only Once**(Mimic componentDidMount): just pass empty array with useEffect.  
+**Run Use Effect after unmount**(Mimic componentWillUnMount): just return another function from the function which was passed in useEffect. Returned function will run before compoenent is removed.  
+
+  **If you think dependency array is a way to specify when you want to return the effect, you are going to run into problems. Instead, dependency array should be thought of as a way to let react know about everything that the effect must watch for changes.** [Illustration](https://www.youtube.com/watch?v=SP-NrbQHFww&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=54)
+
+  **You Can Also Use Multiple Use Effect**
+
+* **useContext**  
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+* **useReducer**
+useReducer is hook that is used for state managemenet.
+It is an alternative to useState, useState is built using useReducer.  
+**reduce vs useReducer**
+  | reduce in Javascript | useReducer in React |  
+  | --- | --- |  
+  | array.reduce(<reducer_function>, initialValue) | useReducer(<reducer_function>, initialState) |
+  | singleValue = reducer_function(accumulator, itemValue) | newState = reducer_function(currentState, action) |
+  | reduce returns a single value | useReducer returns a pair of values [newState, dispatch] |
