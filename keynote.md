@@ -218,3 +218,36 @@ It is an alternative to useState, useState is built using useReducer.
   | array.reduce(<reducer_function>, initialValue) | useReducer(<reducer_function>, initialState) |
   | singleValue = reducer_function(accumulator, itemValue) | newState = reducer_function(currentState, action) |
   | reduce returns a single value | useReducer returns a pair of values [newState, dispatch] |
+
+* **use Reducer with use Context**
+
+* **Fetching data with use Reducer**
+
+* **useReducer vs useState**
+
+  | Scenario | useState | useReducer |
+  | ------ | ------ | ------ |
+  | Type of State | Number, string or boolean (primitive) | Object or Array (non-primitive)
+  | Number of State Transactions | One or Two | Too Many |
+  | Related State Transaction? | No | Yes |
+  | Bussiness Logic | No bussiness Logic | Complex Bisiness Logic |
+  | Local Global | Local | Global (prefered due to dispatch method) |
+
+* **useCallback Hook**  
+**WHAT?** useCallback is hook that will return a memoized version of the callback function that only changes if one of the dependencies has changed.  
+**WHY?** It is useful when passing callbacks to optimized child components that rely on reference equality(checks whether functions are equal or not) to prevent unnecessary renders.
+
+* **useMemo Hook**  
+React has a built-in hook called useMemo that allows you to memoize expensive functions so that you can avoid calling them on every render. The useMemo Hook only runs when one of its dependencies update.
+
+* **useMemo vs useCallback**  
+useCallback caches the the function itself, while the useMemo invoke the function and caches its return value.  
+
+* **useRef Hook**  
+The useRef Hook allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated. It can be used to access a DOM element directly.  
+*It can be used to create a generic container which can hold a mutable value simillar to instance properties on class components. This generic container doesn't cause re-renders when the data it stores changes and at the same it also remembers the stored data even after other state variable cause the re-render of the component*
+
+* **custom Hooks**  
+A custom hook is basically a Javascript function whose name starts with 'use'.  
+A custom hook can also call other Hooks if required.  
+**Why to use custom hook?** Share logic -- Alternative to HOC or render props

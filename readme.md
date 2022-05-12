@@ -44,3 +44,12 @@
 * useContext
 * useReducer (single type, object type)
 * Multiple useReducer
+
+## Day5
+
+* useReducer and useContext
+* Fetch API data using use Reducer
+* useCallback hook
+* useMemoHook
+* useRef
+* customHooks
