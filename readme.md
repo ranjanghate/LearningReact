@@ -53,3 +53,12 @@
 * useMemoHook
 * useRef
 * customHooks
+
+## Day6
+
+* How rendering works in react( Render and commit phase)
+* Render and Rendering with useState and useReducer
+* State immutability
+* Rendering with Parent and Child
+* Same Element Reference
+* useMemo

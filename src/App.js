@@ -6,11 +6,13 @@ import Day2 from './Day2';
 import Day3 from './Day3';
 import Day4 from './Day4';
 import Day5 from './Day5';
+import Day6 from './Day6';
 
 function App() {
   return (
     <div className="App">
-      <Day5 />
+      <Day6 />
+      {/* <Day5 /> */}
       {/* <Day4 /> */}
       {/* <Day3 /> */}
       {/* <Day2 /> */}

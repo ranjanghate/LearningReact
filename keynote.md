@@ -251,3 +251,58 @@ The useRef Hook allows you to persist values between renders. It can be used to 
 A custom hook is basically a Javascript function whose name starts with 'use'.  
 A custom hook can also call other Hooks if required.  
 **Why to use custom hook?** Share logic -- Alternative to HOC or render props
+
+* **How Render works in reacts?**  
+When we run react application, the code return in our component get translated into element that get mounted into the DOM. React split this process into two phase.
+  1) Render Phase  
+  During this phase react will start at the root of the component tree and goes downwards to the leaf components, *while traversing for each of the components react invokes the create element methods and converts the compoenents JSX into react elements and stores that render output.* **React elements are basically javascript objects that describe the structure of your UI**.  
+  2) Commit Phase  
+  Once the JSX to react element conversion is done for the entire component tree all the react elements are handed over to the commit phase. In the commit phase the react elements are applied to the dom using the react-dom package.  
+**Render phase during re-rendering**  
+During re-rendering phase react will start at the root of the component tree and goes downwards to the leaf components finding all components that have been flagged as needing updates(A component can flag itself by calling useState setter function or calling the useReducer dispatch function).  
+For each flagged component, react converts JSX to React element and store the result.  
+Perform reconciliation - Diff old and new tree of React elements (a.k.a Virtual DOM)  
+Hands over the change to commit phase.
+
+* **[Strict Mode](https://reactjs.org/docs/strict-mode.html)**
+It intentionaly double invoke the function component body only in development mode.
+
+* **useState Rendering**  
+Special case with useState and re-rendering is that if you update a state hook to the same value as the current state react may render that component one more time and then bail out from subsequent renders.  
+But after the intial render if you call a setter function but set the state to the same value the component will not re-render.  
+**React uses [object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) method to compare the states**
+
+* **useReducer Rendering**  
+The dispatch function from a useReducer hook will cause the component to re-render.  
+Else everything will be same as useState.
+
+* **State Immutablity**
+Don't directly mutate the object and expect the component to re-render.(same with array)  
+Mutating an object or an array as state will not cause a re-render when used with useState or useReducer Hook.  
+To re-render, make a copy of existing state, modify as neccessery and then pass the newState.  
+
+* **Rendering with Parent and Child**  [Link](https://www.youtube.com/watch?v=b_DtnmQkhWM&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=82&t=420s)  
+When parent component renders react will recursivily render its child component.  
+First Case: When new State is different from Old State.  
+Second Case: When new State is same as Old State.  
+    a) Right after the initial render.  
+      It will not re-render (as usual)  
+    b) After re-renders.  
+      Only Parent component will re-render one more time and then ball out from re-rendering, but child component will not render.
+
+* **Same element re-rendering** [Link](https://www.youtube.com/watch?v=K19dWjcI1Jk&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=84&t=88s)  
+In React, when a parent component renders, React will recursively render all of its child components.  
+"Unneccessary renders" where the child components goes through the rendere phase but not the commit phase.  
+You can extract the expensive child component and instead pass it down as props to the parent component.  
+Whenever there is a re-render caused by a change in the state of the parent component, React will optimize the re-render for you by knowing that the props has to be referncing the same element before and after the render.  
+But the when you update the prop of the parent component the children component(which passed as prop) will also again go through the render phase.  
+
+* **React Memo**  
+To let the react know that it should re-render the child component only if its props change. React.memo is a Higher Order component which we can use to wrap componnet if they render the same result given the same props. It memoize the render output, so if your component props don't change between the renders react will skip rendering the component and reuse the last rendered result.  
+**When to use**  
+In React, when a parent component renders, a child component might un-necessarily render.  
+To optimize this behaviour, you can use React.memo and pass in the child Component.  
+React.memo will perform a shallow comparison of the previous and new props and re-render the child component only if the props have changed.
+
+* **Incorrect Memo with the Children [VVIP]**  
+In react props.children is always a new reference which will cause the child component to always render. So there is no need to wrap your child component with React.memo, if the child component itself has children elements as a props.
