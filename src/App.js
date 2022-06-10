@@ -12,7 +12,7 @@ import Day7 from './Day7';
 function App() {
   return (
     <div className="App">
-      <Day7 />
+      {/* <Day7 /> */}
       {/* <Day6 /> */}
       {/* <Day5 /> */}
       {/* <Day4 /> */}

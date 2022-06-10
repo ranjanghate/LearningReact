@@ -79,3 +79,14 @@
 * Redux Toolkit Async Actions
 * React Redux providers
 * React Redux Use selectors
+
+## Day8
+
+* Links and Active Links
+* Navigating Programmaticly
+* Match Route
+* Nested Routes
+* Index Routes
+* Dynamic Routes
+* URL params
+* Search params
