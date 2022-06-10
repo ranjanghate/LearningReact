@@ -306,3 +306,117 @@ React.memo will perform a shallow comparison of the previous and new props and r
 
 * **Incorrect Memo with the Children [VVIP]**  
 In react props.children is always a new reference which will cause the child component to always render. So there is no need to wrap your child component with React.memo, if the child component itself has children elements as a props.
+
+* **What is Redux?**  
+'Redux is a predictable state container for javascript apps'  
+  1) Redux is for javascript apps.  
+  **Redux is not tied to React** it can be used with any UI library and framework like React, Angular, Vue or even Vanilla JS. Redux is a library for Javascript applications.  
+
+  2) Redux is a state container.  
+  Redux stores the state of your application. State of an application is the state shared by all the individual components of that app. Redux will basically store and manage the application state.  
+
+  3) Redux is predictable.
+  In Redux, a pattern is enforced to ensure all the state transactions are explicit and can be tracked. The changes to your application's state became predicatable.  
+
+* **Why to use Redux?**  
+If you want to manage the global state of your application in a predicable way, redux can help you.  
+The pattern and tools provided by Redux make it easier to understand when, where, why and how the state in your application is being updated, and how your application logic will behave when those changes occur.  
+Redux guides you towards writing code that is predicatable and testable, which helps give you confidence that your application will work as expected.  
+
+* **What is Redux Toolkit?**  
+Redux toolkit is a library for efficient redux development and it is the offical, opinionated, batteries-included toolset for efficient Redux development.  
+It is also intended to be the standard way to write  Redux logic in your application.  
+
+* **Why Redux Toolkit?**  
+Redux is great, but it does have a few shortcommings  
+  * Configuring redux in an app seems complicated.  
+  * In addition to redux, a lot of other packages have to be installed to get redux to do something useful.
+  * Redux requires too much boilerplate code.  
+
+  Redux toolkit serves as an abstraction over redux. It hides the difficult parts ensuring you have a good developer experience.  
+
+* **React-Redux is the official Redux UI binding library for React**  
+
+* **Three core concepts of redux**  
+
+1) A **store** that holds the state of your application.
+2) A **action** that describes what happened in the application.
+3) A **reducer** which handles the action and decides how to update the state.
+
+* **Three principles of Redux pattern**  
+
+1) *The global state of your application is stored as a object inside a single store.*
+2) *The only way to change the state is to dispatch an action, an object that describes what happened.*
+To update the state of your app, you need to let Redux know about that with an action. Not allowed to directly update the state object. (State is read-only and only way to update the state is to emmit an action)
+3) *To specify how the state tree is updated based on actions. you write pure reducers*
+
+* **Actions**
+
+1) The only way your application can interact with the store.
+2) Carry some information from your app to the redux store.
+3) They are plain javascript objects.
+4) Must Have a 'type' property that describes somethings that happend in your application.
+5) The 'type' property must be a string constant.
+
+* **Reducers**
+
+1) It specify how the application state changes in response to actions sent to the store.
+2) It is a function that accepts state and action as arguments, and returns the next state of the application.
+
+* **Store**  
+One store for entire Application.  
+Responsibilities  
+
+  1) Hold application state.
+  2) Allow access to stage via getState()
+  3) Allow state to be updated via dispatch(action)
+  4) Register listeners via subscribe(listener)
+  5) Handles unregistering of listeners via the function returned by subscribe(listener)
+
+* **BindActionCreators**  
+bindActionCreator turns an object whose values are action creators into an object with the same keys but every action creator wrapped into a dispatch call so they may be invoked directly.
+
+* **Multiple Reducers(combineReducers)**  
+The combineReducers helper function turns an object whose values are different reducing functions into a single reducing function you can pass to createStore.  
+**When we dispatch an action both the reducers recieve that action, the difference is that one of them acts on that action whereas the others ignores it**  
+
+* **Immer**
+[Link](https://www.youtube.com/watch?v=kgCjXjJkZ-Y&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=13)
+
+* **Middleware**  
+It is the suggested way to extend Redux with custom functionality.  
+Provides a third-party extension point between dispatching an action, and the moment it reaches the reducer.  
+You can use middleware for logging, crash reporting, perform async tasks etc.
+
+* **Async Actions**  
+Redux thunk (define async action creators)  
+thunkmiddleware adds an abilty to an action creator to return a function instead of an action object.
+
+* **Redux Concerns**  
+Redux requires too much boilerplate code
+  * Action
+  * Action Object
+  * Action Creator
+  * Switch Statement in reducer  
+
+  A lot of package has to be installed to work with redux
+  * Redux Thunk
+  * Immer
+  * Redux-dev tools
+
+* **Redux toolkit**  
+Redux toolkit is the offical, opinionated, batteries-included toolset for efficient Redux development  
+  * Abstract over the setup process
+  * Handle the most common use cases
+  * Include some useful utilities
+
+* **createSlice uses the immer library under the hood**.  
+Redux toolkit handles the state updation on your behalf.  
+createSlice will automatically generate action creators with the same names as the reducer functions we have written.  
+createSlice also returns the main reducer function, which we can provide to our redux store.
+
+* **Extra Reducers**  
+In redux toolkit by default reducers from one createSlice will only respond to the action types generated by the same slice, if you want a slice to respond to other action types besides the types it has generated you'll need to make use of extraReducers.  
+
+* **React Redux Provider**  
+The provider component uses react context under the hood and will provide the store to every component in your application.  

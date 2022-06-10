@@ -62,3 +62,20 @@
 * Rendering with Parent and Child
 * Same Element Reference
 * useMemo
+
+## Day7
+
+* Redux
+* Three Core Concepts of Redux(Action, reducers, Store)
+* Three principals of Redux
+* BindActionCreators
+* Multiple reducers
+* Immer
+* Middleware
+* Async Actions, Reduc Thunk
+* Redux Toolkit
+* Redux Toolkit Middleware
+* Redux Toolkit Extra Reducers
+* Redux Toolkit Async Actions
+* React Redux providers
+* React Redux Use selectors
